@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "validationhistory")
 public class CustomerCreditCardValidationHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

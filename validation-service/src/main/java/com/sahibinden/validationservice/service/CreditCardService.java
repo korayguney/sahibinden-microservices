@@ -21,7 +21,7 @@ public class CreditCardService {
         boolean isValid = checkCreditCardNumber(request.getCreditCardNumber());
         CustomerCreditCardValidationHistory history = CustomerCreditCardValidationHistory.builder()
                 .customerId(request.getCustomerId())
-                .binNumber(Integer.valueOf(String.valueOf(request.getCreditCardNumber()).substring(0,5)))
+                .binNumber(Integer.valueOf(String.valueOf(request.getCreditCardNumber()).substring(0,6)))
                 .isValid(isValid)
                 .validationDate(LocalDateTime.now())
                 .build();
