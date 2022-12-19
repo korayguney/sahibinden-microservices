@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/customer-service/customer-service.iml" filepath="$PROJECT_DIR$/customer-service/customer-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/sahibinden-microservices.iml" filepath="$PROJECT_DIR$/sahibinden-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-service/test-service.iml" filepath="$PROJECT_DIR$/test-service/test-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/validation-service/validation-service.iml" filepath="$PROJECT_DIR$/validation-service/validation-service.iml" />
     </modules>
   </component>
