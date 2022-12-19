@@ -2,8 +2,7 @@ package com.sahibinden.customerservice.service;
 
 import com.sahibinden.customerservice.model.*;
 import com.sahibinden.customerservice.repository.CustomerRepository;
-import com.turkcell.customerservice.exception.CustomerDoesNotExistException;
-import com.turkcell.customerservice.model.*;
+import com.sahibinden.customerservice.exception.CustomerDoesNotExistException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

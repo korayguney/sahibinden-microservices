@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
-    name: customer-service
+    name: validation-service
   datasource:
     password: sahibinden
-    url: jdbc:postgresql://localhost:5432/customer-service
+    url: jdbc:postgresql://localhost:5432/validation-service
     username: sahibinden
   jpa:
     hibernate:
