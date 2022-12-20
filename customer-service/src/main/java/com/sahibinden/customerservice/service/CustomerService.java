@@ -3,6 +3,9 @@ package com.sahibinden.customerservice.service;
 import com.sahibinden.customerservice.model.*;
 import com.sahibinden.customerservice.repository.CustomerRepository;
 import com.sahibinden.customerservice.exception.CustomerDoesNotExistException;
+import com.sahibinden.validation.CreditCardValidationClient;
+import com.sahibinden.validation.CreditCardValidationRequest;
+import com.sahibinden.validation.CreditCardValidationResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +17,8 @@ import org.springframework.web.client.RestTemplate;
 public class CustomerService {
 
     private final CustomerRepository repository;
-    private final RestTemplate restTemplate;
+    //private final RestTemplate restTemplate;
+    private final CreditCardValidationClient client;
 
     public long registerCustomer(Customer customer) {
         CustomerEntity customerEntity = CustomerEntity.builder()
@@ -38,8 +42,9 @@ public class CustomerService {
                 .build();
 
         // validate credit card
-        CreditCardValidationResponse response = restTemplate.postForObject("http://VALIDATION-SERVICE/creditcards/validate",
-                validationRequest, CreditCardValidationResponse.class);
+       //CreditCardValidationResponse response = restTemplate.postForObject("http://VALIDATION-SERVICE/creditcards/validate",
+       //        validationRequest, CreditCardValidationResponse.class);
+        CreditCardValidationResponse response = client.validateCreditCard(validationRequest);
 
         if(response.isValid()) {
             // retrieve payment

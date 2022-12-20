@@ -7,17 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="customer-service" />
         <module name="validation-service" />
+        <module name="clients" />
+        <module name="customer-service" />
         <module name="eureka-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="customer-service" target="17" />
-      <module name="eureka-server" target="17" />
-      <module name="sahibinden-microservices" target="17" />
       <module name="test-service" target="17" />
-      <module name="validation-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -1,7 +1,7 @@
 package com.sahibinden.validationservice.service;
 
-import com.sahibinden.validationservice.model.CreditCardValidationRequest;
-import com.sahibinden.validationservice.model.CreditCardValidationResponse;
+import com.sahibinden.validation.CreditCardValidationRequest;
+import com.sahibinden.validation.CreditCardValidationResponse;
 import com.sahibinden.validationservice.model.CustomerCreditCardValidationHistory;
 import com.sahibinden.validationservice.repository.CustomerCreditCardValidationHistoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class CreditCardService {
 
     private final CustomerCreditCardValidationHistoryRepository repository;
 
-    public CreditCardValidationResponse validateCreditCard( CreditCardValidationRequest request) {
+    public CreditCardValidationResponse validateCreditCard(CreditCardValidationRequest request) {
         boolean isValid = checkCreditCardNumber(request.getCreditCardNumber());
         CustomerCreditCardValidationHistory history = CustomerCreditCardValidationHistory.builder()
                 .customerId(request.getCustomerId())

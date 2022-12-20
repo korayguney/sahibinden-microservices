@@ -17,6 +17,8 @@
     <modules>
         <module>customer-service</module>
         <module>validation-service</module>
+        <module>eureka-server</module>
+        <module>clients</module>
     </modules>
     
 </project>

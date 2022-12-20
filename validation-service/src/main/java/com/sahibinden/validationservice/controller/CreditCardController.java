@@ -1,7 +1,7 @@
 package com.sahibinden.validationservice.controller;
 
-import com.sahibinden.validationservice.model.CreditCardValidationRequest;
-import com.sahibinden.validationservice.model.CreditCardValidationResponse;
+import com.sahibinden.validation.CreditCardValidationRequest;
+import com.sahibinden.validation.CreditCardValidationResponse;
 import com.sahibinden.validationservice.service.CreditCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
