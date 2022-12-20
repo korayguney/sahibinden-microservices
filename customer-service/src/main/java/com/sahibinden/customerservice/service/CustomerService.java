@@ -38,7 +38,7 @@ public class CustomerService {
                 .build();
 
         // validate credit card
-        CreditCardValidationResponse response = restTemplate.postForObject("http://localhost:8081/creditcards/validate",
+        CreditCardValidationResponse response = restTemplate.postForObject("http://VALIDATION-SERVICE/creditcards/validate",
                 validationRequest, CreditCardValidationResponse.class);
 
         if(response.isValid()) {

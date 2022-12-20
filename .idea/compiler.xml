@@ -9,10 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="customer-service" />
         <module name="validation-service" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="customer-service" target="17" />
+      <module name="eureka-server" target="17" />
       <module name="sahibinden-microservices" target="17" />
       <module name="test-service" target="17" />
       <module name="validation-service" target="17" />
@@ -21,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="customer-service" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="test-service" options="-parameters" />
       <module name="validation-service" options="-parameters" />
     </option>
