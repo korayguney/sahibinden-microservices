@@ -11,6 +11,7 @@
         <module name="clients" />
         <module name="customer-service" />
         <module name="eureka-server" />
+        <module name="notification-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="customer-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
       <module name="test-service" options="-parameters" />
       <module name="validation-service" options="-parameters" />
     </option>

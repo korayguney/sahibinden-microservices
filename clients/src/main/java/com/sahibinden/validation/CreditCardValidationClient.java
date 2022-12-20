@@ -10,5 +10,4 @@ public interface CreditCardValidationClient {
     @PostMapping("/creditcards/validate")
     public CreditCardValidationResponse validateCreditCard(@RequestBody CreditCardValidationRequest request);
 
-
 }

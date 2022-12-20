@@ -6,7 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients(
-        basePackages = "com.sahibinden.validation"
+        basePackages = {
+                "com.sahibinden.validation",
+                "com.sahibinden.notification"
+        }
 )
 public class CustomerServiceApplication {
 
