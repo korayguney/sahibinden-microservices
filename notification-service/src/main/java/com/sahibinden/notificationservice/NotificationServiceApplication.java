@@ -15,22 +15,22 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
         }
 )
 @EnableEurekaClient
-public class NotificationServiceApplication implements CommandLineRunner {
+public class NotificationServiceApplication {//implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(NotificationServiceApplication.class, args);
     }
 
-    @Autowired
-    RabbitMQMessageProducer producer;
+   //@Autowired
+   //RabbitMQMessageProducer producer;
 
-    @Autowired
-    NotificationConfig config;
+   //@Autowired
+   //NotificationConfig config;
 
-    @Override
-    public void run(String... args) throws Exception {
-        producer.publish(new Customer("Ali Veli", 35), config.getNotificationExchange(), config.getNotificationRoutingKey());
-    }
-
-    record Customer(String name, int age) {}
+    //@Override
+    //public void run(String... args) throws Exception {
+    //    producer.publish(new Customer("Ali Veli", 35), config.getNotificationExchange(), config.getNotificationRoutingKey());
+    //}
+//
+    //record Customer(String name, int age) {}
 }
