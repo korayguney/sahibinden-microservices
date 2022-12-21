@@ -5,6 +5,7 @@ import com.sahibinden.customerservice.repository.CustomerRepository;
 import com.sahibinden.customerservice.exception.CustomerDoesNotExistException;
 import com.sahibinden.notification.NotificationClient;
 import com.sahibinden.notification.NotificationRequest;
+import com.sahibinden.rabbitmq.RabbitMQMessageProducer;
 import com.sahibinden.validation.CreditCardValidationClient;
 import com.sahibinden.validation.CreditCardValidationRequest;
 import com.sahibinden.validation.CreditCardValidationResponse;
@@ -21,6 +22,7 @@ public class CustomerService {
     //private final RestTemplate restTemplate;
     private final CreditCardValidationClient cardValidationClient;
     private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     public long registerCustomer(Customer customer) {
         CustomerEntity customerEntity = CustomerEntity.builder()
@@ -44,11 +46,11 @@ public class CustomerService {
                 .build();
 
         // validate credit card
-       //CreditCardValidationResponse response = restTemplate.postForObject("http://VALIDATION-SERVICE/creditcards/validate",
-       //        validationRequest, CreditCardValidationResponse.class);
+        //CreditCardValidationResponse response = restTemplate.postForObject("http://VALIDATION-SERVICE/creditcards/validate",
+        //        validationRequest, CreditCardValidationResponse.class);
         CreditCardValidationResponse response = cardValidationClient.validateCreditCard(validationRequest);
 
-        if(response.isValid()) {
+        if (response.isValid()) {
             // retrieve payment
             log.info("Payment retrieved successfully!");
 
@@ -57,20 +59,35 @@ public class CustomerService {
             repository.save(customerEntity);
 
             // send notification
-            notificationClient.sendNotification(
-                    NotificationRequest.builder()
-                            .toCustomerId(customerEntity.getId())
-                            .toCustomerEmail(customerEntity.getEmail())
-                            .message("Hi " + customerEntity.getFirstname() + ", your membership is upgraded to premium!")
-                            .build()
-            );
+            // Send notification via openfeign client
+            // notificationClient.sendNotification(
+            //         NotificationRequest.builder()
+            //                 .toCustomerId(customerEntity.getId())
+            //                 .toCustomerEmail(customerEntity.getEmail())
+            //                 .message("Hi " + customerEntity.getFirstname() + ", your membership is upgraded to premium!")
+            //                 .build()
+            // );
+
+
+            NotificationRequest notificationRequest = NotificationRequest.builder()
+                    .toCustomerId(customerEntity.getId())
+                    .toCustomerEmail(customerEntity.getEmail())
+                    .message("Hi " + customerEntity.getFirstname() + ", your membership is upgraded to premium!")
+                    .build();
+
+
+            // Send notification via rabbitmq
+            rabbitMQMessageProducer.publish(notificationRequest,
+                    "notification.exchange",
+                    "notification.routing-key");
+
         }
 
         // log result
-        if(response.isValid()) {
-            log.info("Customer : {} 's membership upgraded to premium! " , customerEntity.getFirstname());
+        if (response.isValid()) {
+            log.info("Customer : {} 's membership upgraded to premium! ", customerEntity.getFirstname());
         } else {
-            log.info("Customer with ID : {} NOT upgraded to premium! " , request.getCustomerId());
+            log.info("Customer with ID : {} NOT upgraded to premium! ", request.getCustomerId());
         }
 
         // return result
