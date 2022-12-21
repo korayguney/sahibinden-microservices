@@ -1,34 +1,5 @@
-server:
-  port: 8082
 spring:
   application:
     name: notification-service
-  datasource:
-    password: sahibinden
-    url: jdbc:postgresql://localhost:5432/notification-service
-    username: sahibinden
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: true
-  zipkin:
-    base-url: http://localhost:9411
-  rabbitmq:
-    addresses: localhost:5672
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
-    fetch-registry: true
-    register-with-eureka: true
-rabbitmq:
-  exchanges:
-    internal: notification.exchange
-  queues:
-    notification: notification.queue
-  routing-keys:
-    internal-notification: notification.routing-key
+  config:
+    import: configserver:http://localhost:8888

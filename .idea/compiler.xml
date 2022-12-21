@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="validation-service" />
         <module name="apigw" />
+        <module name="config-server" />
         <module name="clients" />
         <module name="customer-service" />
         <module name="eureka-server" />
@@ -23,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="apigw" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="customer-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="notification-service" options="-parameters" />
