@@ -17,6 +17,7 @@
     <modules>
         <module>customer-service</module>
         <module>validation-service</module>
+        <module>notification-service</module>
         <module>eureka-server</module>
         <module>clients</module>
         <module>rabbitmq</module>
