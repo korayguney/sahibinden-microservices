@@ -19,6 +19,7 @@
         <module>validation-service</module>
         <module>eureka-server</module>
         <module>clients</module>
+        <module>rabbitmq</module>
     </modules>
     
 </project>

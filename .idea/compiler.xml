@@ -12,6 +12,7 @@
         <module name="clients" />
         <module name="customer-service" />
         <module name="eureka-server" />
+        <module name="rabbitmq" />
         <module name="notification-service" />
       </profile>
     </annotationProcessing>
