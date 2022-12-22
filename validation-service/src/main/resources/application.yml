@@ -5,7 +5,7 @@ spring:
     name: validation-service
   datasource:
     password: sahibinden
-    url: jdbc:postgresql://localhost:5432/validation-service
+    url: jdbc:postgresql://localhost:5432/validation
     username: sahibinden
   jpa:
     hibernate:

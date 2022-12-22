@@ -1,6 +1,7 @@
 package com.sahibinden.notificationservice.controller;
 
 import com.sahibinden.notification.NotificationRequest;
+import com.sahibinden.notification.NotificationResponse;
 import com.sahibinden.notificationservice.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,8 @@ public class NotificationController {
     private final NotificationService service;
 
     @PostMapping("/notifications")
-    public void sendNotification(@RequestBody NotificationRequest request){
-        service.sendNotification(request);
+    public NotificationResponse sendNotification(@RequestBody NotificationRequest request){
+        return service.sendNotification(request);
     }
 
 }

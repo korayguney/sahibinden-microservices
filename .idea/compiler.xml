@@ -15,6 +15,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="apigw" target="17" />
+      <module name="config-server" target="17" />
+      <module name="rabbitmq" target="17" />
       <module name="test-service" target="17" />
     </bytecodeTargetLevel>
   </component>
