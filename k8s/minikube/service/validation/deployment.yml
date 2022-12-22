@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: validation-service
+  labels:
+    app: validation-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: validation-service
+      labels:
+        app: validation-service
+    spec:
+      containers:
+        - name: validation-service
+          image: korayguney/validation-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: validation-service

@@ -5,7 +5,7 @@ spring:
     name: validation-service
   datasource:
     password: sahibinden
-    url: jdbc:postgresql://localhost:5432/validation-service
+    url: jdbc:postgresql://localhost:5432/validation
     username: sahibinden
   jpa:
     hibernate:
@@ -23,3 +23,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+    enabled: false

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  labels:
+    app: notification-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: notification-service
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - name: notification-service
+          image: korayguney/notification-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: notification-service
